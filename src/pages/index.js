@@ -1,3 +1,4 @@
 import MainPage from './MainPage';
+import NewExamForm from './NewExamForm';
 
-export { MainPage };
+export { MainPage, NewExamForm };

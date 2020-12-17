@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function MainPage() {
@@ -19,8 +20,8 @@ export default function MainPage() {
             </WelcomeTextContainer>
 
             <ButtonsContainer>
-                <button>Me ajuda, RepoProvas!</button>
-                <button>Quero contribuir</button>
+                <Link>Me ajuda, RepoProvas!</Link>
+                <Link to='/postar-prova'>Quero contribuir</Link>
             </ButtonsContainer>
         </Container>
     );
@@ -60,9 +61,13 @@ const WelcomeTextContainer = styled.div`
 
 const ButtonsContainer = styled.div`
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 
-    button {
-        display: block;
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin: 0 auto;
         margin-top: 15px;
         width: 326px;
