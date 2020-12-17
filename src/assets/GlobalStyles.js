@@ -38,6 +38,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         line-height: 1;
         background: black;
+        padding-top: 80px;
     }
     ol, ul {
         list-style: none;
