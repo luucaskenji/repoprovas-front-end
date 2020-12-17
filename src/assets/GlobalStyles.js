@@ -30,11 +30,14 @@ const GlobalStyles = createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
         display: block;
     }
-    body {
-        line-height: 1;
+    html {
         font-size: 18px;
 
-        @media (max-width: 700px) { font-size: 24px; }
+        @media (min-width: 700px) { font-size: 24px; }
+    }
+    body {
+        line-height: 1;
+        background: black;
     }
     ol, ul {
         list-style: none;
