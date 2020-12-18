@@ -22,7 +22,7 @@ export default function NewExamDataProvider({ children }) {
             type: chosenTypeOfExam
         }
 
-        axios.post('http://localhost:3000/api/new-exam', body)
+        axios.post('https://repoprovas-back-end.herokuapp.com/api/new-exam', body)
             .then(r => {
                 setFinishedPosting(true);
                 alert('Prova publicada com sucesso');
