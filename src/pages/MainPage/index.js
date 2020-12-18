@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { media } from '../../assets/mediaQuery';
+
 export default function MainPage() {
     return (
         <Container>
@@ -30,6 +32,10 @@ export default function MainPage() {
 const Container = styled.div`
     display: flex;
     align-items: center;
+
+    ${media} {
+        flex-direction: column;
+    }
 `;
 
 const WelcomeTextContainer = styled.div`
@@ -52,10 +58,24 @@ const WelcomeTextContainer = styled.div`
         font-family: 'Caveat', cursive;
         font-size: 3.125rem;
         margin-bottom: 40px;
+        line-height: 60px;
     }
 
     span:last-child {
         margin-top: 25px;
+    }
+
+    ${media} {
+        padding: 0 20px;
+        border: none;
+        width: 100%;
+
+        span:first-child {
+            margin-bottom: 15px;
+        }
+
+
+        span:nth-child(2) { display: none; }
     }
 `;
 
@@ -63,6 +83,7 @@ const ButtonsContainer = styled.div`
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    padding: 0 10px;
 
     a {
         display: flex;
