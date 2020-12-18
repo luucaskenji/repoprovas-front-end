@@ -34,7 +34,7 @@ export default function NewExamForm() {
             const chosenCourseId = courseObject.id;
 
             axios
-                .get(`http://localhost:3000/api/${chosenCourseId}/professors`)
+                .get(`https://repoprovas-back-end.herokuapp.com/api/${chosenCourseId}/professors`)
                 .then(r => setCourseProfessors(r.data))
                 .catch(err => console.log(err));
         }
