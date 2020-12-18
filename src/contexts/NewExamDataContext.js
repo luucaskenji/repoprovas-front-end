@@ -7,6 +7,7 @@ export default function NewExamDataProvider({ children }) {
     const [chosenCourseProfessor, setChosenCourseProfessor] = useState('');
     const [chosenTypeOfExam, setChosenTypeOfExam] = useState('');
     const [semester, setSemester] = useState('');
+    const [url, setUrl] = useState('');
     
     const value = {
         chosenCourse,
@@ -16,7 +17,9 @@ export default function NewExamDataProvider({ children }) {
         chosenTypeOfExam,
         setChosenTypeOfExam,
         semester,
-        setSemester
+        setSemester,
+        url,
+        setUrl
     };
 
     return (

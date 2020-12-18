@@ -34,17 +34,12 @@ export default function NewExamForm() {
     }, []);
 
     useEffect(() => {
-        const courseObject = courses.find(c => c.name === chosenCourse);
-
-        if (courseObject) {
-            const chosenCourseId = courseObject.id;
-
+        if (chosenCourse.id) {
             axios
-                .get(`https://repoprovas-back-end.herokuapp.com/api/${chosenCourseId}/professors`)
+                .get(`https://repoprovas-back-end.herokuapp.com/api/${chosenCourse.id}/professors`)
                 .then(r => setCourseProfessors(r.data))
                 .catch(err => console.log(err));
         }
-
     }, [chosenCourse]);
 
     const validate = e => {
@@ -65,8 +60,8 @@ export default function NewExamForm() {
                         <SelectContainer>
                             <label>Matéria</label>
                             <select
-                                value={chosenCourse}
-                                onChange={e => setChosenCourse(e.target.value)}
+                                value={chosenCourse.name}
+                                onChange={e => setChosenCourse(courses.find(c => c.name === e.target.value))}
                             >
                                 <option></option>
                                 {
@@ -81,8 +76,8 @@ export default function NewExamForm() {
                             <label>Professor</label>
                             <select
                                 disabled={!chosenCourse}
-                                value={chosenCourseProfessor}
-                                onChange={e => setChosenCourseProfessor(e.target.value)}
+                                value={chosenCourseProfessor.name}
+                                onChange={e => setChosenCourseProfessor(courseProfessors.find(p => p.name === e.target.value))}
                             >
                                 <option></option>
                                 {
