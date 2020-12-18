@@ -10,7 +10,7 @@ import {
 
 export default function NewExamForm() {
     const [courses, setCourses] = useState([]);
-    console.log(courses);
+    const [chosenCourse, setChosenCourse] = useState(null);
 
     useEffect(() => {
         axios.get('https://repoprovas-back-end.herokuapp.com/api/courses')
@@ -25,9 +25,11 @@ export default function NewExamForm() {
                     <div>
                         <SelectContainer>
                             <label>Matéria</label>
-                            <select>
+                            <select value={chosenCourse} onChange={e => setChosenCourse(e.target.value)}>
                                 {
-                                    courses.map(c => <option>{c.name}</option>)
+                                    courses.length > 0
+                                        ? courses.map(c => <option>{c.name}</option>)
+                                        : <option>...</option>
                                 }
                             </select>
                         </SelectContainer>
