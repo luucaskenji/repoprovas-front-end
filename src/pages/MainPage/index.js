@@ -22,7 +22,7 @@ export default function MainPage() {
             </WelcomeTextContainer>
 
             <ButtonsContainer>
-                <Link to='/'>Me ajuda, RepoProvas!</Link>
+                <Link to='/escolha-de-filtragem'>Me ajuda, RepoProvas!</Link>
                 <Link to='/inserir-dados'>Quero contribuir</Link>
             </ButtonsContainer>
         </Container>
