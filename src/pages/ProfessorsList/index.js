@@ -8,6 +8,8 @@ export default function ProfessorsList() {
     const [professors, setProfessors] = useState([]);
     const [exams, setExams] = useState([]);
 
+
+
     console.log(professors);
     console.log(exams);    
 
@@ -25,7 +27,7 @@ export default function ProfessorsList() {
 
     return (
         <Container>
-            {professors.map(p => <ProfessorItem key={p.id} />)}
+            {professors.map(p => <ProfessorItem key={p.id} professor={p.name} examsList={exams} />)}
         </Container>
     );
 }
@@ -39,4 +41,5 @@ const Container = styled.ul`
     font-family: 'Patrick Hand', cursive;
     color: #EFEFEF;
     padding: 0 40px;
+    flex-wrap: wrap;
 `;
