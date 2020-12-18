@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import axios from 'axios';
 
@@ -16,6 +17,8 @@ export default function NewExamForm() {
     const [chosenCourseProfessor, setChosenCourseProfessor] = useState('');
     const [chosenTypeOfExam, setChosenTypeOfExam] = useState('');
     const [semester, setSemester] = useState('');
+    const isButtonDisabled = !chosenCourse || !chosenCourseProfessor || !chosenTypeOfExam || !semester;
+    const history = useHistory();
     
     useEffect(() => {
         axios
@@ -38,9 +41,19 @@ export default function NewExamForm() {
 
     }, [chosenCourse]);
 
+    const validate = e => {
+        e.preventDefault();
+
+        for (let i = 0; i < semester.length; i++) {
+            if (semester[i] === '_') return alert('Digite o semestre corretamente')
+        }
+        
+        history.push('/inserir-link');
+    };
+
     return (
         <Container>
-            <form>
+            <form onSubmit={validate}>
                 <div>
                     <div>
                         <SelectContainer>
@@ -100,7 +113,7 @@ export default function NewExamForm() {
                 </div>
 
                 <div>
-                    <Button>Prosseguir</Button>
+                    <Button type='submit' disabled={isButtonDisabled}>Prosseguir</Button>
                 </div>
             </form>
         </Container>
