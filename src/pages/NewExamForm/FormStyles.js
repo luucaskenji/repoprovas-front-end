@@ -62,7 +62,7 @@ export const Button = styled.button`
     width: 146px;
     height: 55px;
     border-radius: 10px;
-    background: green;
+    background: ${({ disabled }) => disabled ? 'gray' : 'green'};
     color: white;
     font-family: 'Patrick Hand', cursive;
     font-size: 1.17rem;

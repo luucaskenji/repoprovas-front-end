@@ -21,7 +21,7 @@ export default function MainPage() {
 
             <ButtonsContainer>
                 <Link to='/'>Me ajuda, RepoProvas!</Link>
-                <Link to='/postar-prova'>Quero contribuir</Link>
+                <Link to='/inserir-dados'>Quero contribuir</Link>
             </ButtonsContainer>
         </Container>
     );
