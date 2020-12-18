@@ -4,6 +4,7 @@ import InputMask from 'react-input-mask';
 import axios from 'axios';
 
 import { NewExamDataContext } from '../../contexts/NewExamDataContext';
+import { CoursesContext } from '../../contexts/CoursesContext';
 import {
     Container,
     SelectContainer,
@@ -12,7 +13,7 @@ import {
 } from './FormStyles';
 
 export default function NewExamForm() {
-    const [courses, setCourses] = useState([]);
+    const { courses } = useContext(CoursesContext)
     const [courseProfessors, setCourseProfessors] = useState([]);
     const {
         chosenCourse, 
@@ -26,13 +27,6 @@ export default function NewExamForm() {
     const isButtonDisabled = !chosenCourse || !chosenCourseProfessor || !chosenTypeOfExam || !semester;
     const history = useHistory();
     
-    useEffect(() => {
-        axios
-            .get('https://repoprovas-back-end.herokuapp.com/api/courses')
-            .then(r => setCourses(r.data))
-            .catch(err => console.log(err));
-    }, []);
-
     useEffect(() => {
         if (chosenCourse.id) {
             axios

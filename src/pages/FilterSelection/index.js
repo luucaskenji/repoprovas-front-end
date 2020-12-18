@@ -6,7 +6,7 @@ export default function FilterSelection() {
     return (
         <Container>
             <Button to='/'>Filtrar por matéria</Button>
-            <Button to='/'>Filtrar por professor</Button>
+            <Button to='/professores/lista'>Filtrar por professor</Button>
         </Container>
     );
 }
