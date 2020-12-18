@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 import axios from 'axios';
 
+import { NewExamDataContext } from '../../contexts/NewExamDataContext';
 import {
     Container,
     SelectContainer,
@@ -12,11 +13,16 @@ import {
 
 export default function NewExamForm() {
     const [courses, setCourses] = useState([]);
-    const [chosenCourse, setChosenCourse] = useState('');
     const [courseProfessors, setCourseProfessors] = useState([]);
-    const [chosenCourseProfessor, setChosenCourseProfessor] = useState('');
-    const [chosenTypeOfExam, setChosenTypeOfExam] = useState('');
-    const [semester, setSemester] = useState('');
+    const {
+        chosenCourse, 
+        setChosenCourse, 
+        chosenCourseProfessor,
+        setChosenCourseProfessor,
+        chosenTypeOfExam,
+        setChosenTypeOfExam,
+        semester,
+        setSemester } = useContext(NewExamDataContext);
     const isButtonDisabled = !chosenCourse || !chosenCourseProfessor || !chosenTypeOfExam || !semester;
     const history = useHistory();
     
