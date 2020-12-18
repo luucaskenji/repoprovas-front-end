@@ -69,8 +69,10 @@ const WelcomeTextContainer = styled.div`
         padding: 0 20px;
         border: none;
         width: 100%;
+        align-items: center;
 
         span:first-child {
+            font-size: 2.8rem;
             margin-bottom: 15px;
         }
 
@@ -98,6 +100,10 @@ const ButtonsContainer = styled.div`
         font-family: 'Patrick Hand', cursive;
         border-radius: 10px;
         font-size: 1.17rem;
+
+        ${media} {
+            width: 80vw;
+        }
 
         &:hover {
             color: #EFEFEF;
