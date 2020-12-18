@@ -13,7 +13,7 @@ export default function NewExamForm() {
     console.log(courses);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/courses')
+        axios.get('https://repoprovas-back-end.herokuapp.com/api/courses')
             .then(r => setCourses(r.data))
             .catch(err => console.log(err));
     }, []);
