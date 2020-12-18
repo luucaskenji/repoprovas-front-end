@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
+import { NewExamDataContext } from '../../contexts/NewExamDataContext';
+
 export default function UrlInsertion() {
-    const [url, setUrl] = useState('');
+    const { url, setUrl } = useContext(NewExamDataContext);
 
     const sendDataToServer = () => {
-
+        
     }
 
     return (
