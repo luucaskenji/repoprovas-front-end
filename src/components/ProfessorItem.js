@@ -8,7 +8,10 @@ export default function ProfessorItem({ professor, examsList }) {
     const professorExams = examsList.filter(e => e.professor === professor);
 
     return (
-        <Item to='/'>
+        <Item to={{
+            pathname: '/professor/provas',
+            state: { professor, professorExams }
+        }}>
             <span>{professor}</span>
             <span>Provas disponíveis: {professorExams.length}</span>
         </Item>

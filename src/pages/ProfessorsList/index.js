@@ -8,11 +8,6 @@ export default function ProfessorsList() {
     const [professors, setProfessors] = useState([]);
     const [exams, setExams] = useState([]);
 
-
-
-    console.log(professors);
-    console.log(exams);    
-
     useEffect(() => {
         axios
             .get('http://localhost:3000/api/professors')
