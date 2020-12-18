@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import InputMask from 'react-input-mask';
 import axios from 'axios';
 
 import {
@@ -12,6 +13,9 @@ export default function NewExamForm() {
     const [courses, setCourses] = useState([]);
     const [chosenCourse, setChosenCourse] = useState('');
     const [courseProfessors, setCourseProfessors] = useState([]);
+    const [chosenCourseProfessor, setChosenCourseProfessor] = useState('');
+    const [chosenTypeOfExam, setChosenTypeOfExam] = useState('');
+    const [semester, setSemester] = useState('');
     
     useEffect(() => {
         axios
@@ -41,7 +45,11 @@ export default function NewExamForm() {
                     <div>
                         <SelectContainer>
                             <label>Matéria</label>
-                            <select value={chosenCourse} onChange={e => setChosenCourse(e.target.value)}>
+                            <select
+                                value={chosenCourse}
+                                onChange={e => setChosenCourse(e.target.value)}
+                            >
+                                <option></option>
                                 {
                                     courses.length > 0
                                         ? courses.map(c => <option key={c.id}>{c.name}</option>)
@@ -52,8 +60,17 @@ export default function NewExamForm() {
     
                         <SelectContainer>
                             <label>Professor</label>
-                            <select>
-                                <option>Teste</option>
+                            <select
+                                disabled={!chosenCourse}
+                                value={chosenCourseProfessor}
+                                onChange={e => setChosenCourseProfessor(e.target.value)}
+                            >
+                                <option></option>
+                                {
+                                    courseProfessors.length === 0
+                                        ? <option>-</option>
+                                        : courseProfessors.map(p => <option key={p.id}>{p.name}</option>)
+                                }
                             </select>
                         </SelectContainer>
                     </div>
@@ -61,14 +78,23 @@ export default function NewExamForm() {
                     <div>
                         <SelectContainer>
                             <label>Tipo de prova</label>
-                            <select>
-                                <option>Teste</option>
+                            <select
+                                value={chosenTypeOfExam}
+                                onChange={e => setChosenTypeOfExam(e.target.value)}
+                            >
+                                <option></option>
+                                <option>P1</option>
+                                <option>P2</option>
+                                <option>P3</option>
+                                <option>PF</option>
+                                <option>2ch</option>
+                                <option>Outras</option>
                             </select>
                         </SelectContainer>
     
                         <InputContainer>
                             <span>Semestre</span>
-                            <input />
+                            <InputMask mask={'9999.9'} value={semester} onChange={e => setSemester(e.target.value)}/>
                         </InputContainer>
                     </div>
                 </div>
