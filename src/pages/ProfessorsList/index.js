@@ -10,12 +10,12 @@ export default function ProfessorsList() {
 
     useEffect(() => {
         axios
-            .get('http://localhost:3000/api/professors')
+            .get('https://repoprovas-back-end.herokuapp.com/api/professors')
             .then(r => setProfessors(r.data))
             .catch(err => console.log(err));
 
         axios
-            .get(`http://localhost:3000/api/exams`)
+            .get(`https://repoprovas-back-end.herokuapp.com/api/exams`)
             .then(r => setExams(r.data))
             .catch(err => console.log(err));
     }, []);
