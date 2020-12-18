@@ -10,13 +10,29 @@ import {
 
 export default function NewExamForm() {
     const [courses, setCourses] = useState([]);
-    const [chosenCourse, setChosenCourse] = useState(null);
-
+    const [chosenCourse, setChosenCourse] = useState('');
+    const [courseProfessors, setCourseProfessors] = useState([]);
+    
     useEffect(() => {
-        axios.get('https://repoprovas-back-end.herokuapp.com/api/courses')
+        axios
+            .get('https://repoprovas-back-end.herokuapp.com/api/courses')
             .then(r => setCourses(r.data))
             .catch(err => console.log(err));
     }, []);
+
+    useEffect(() => {
+        const courseObject = courses.find(c => c.name === chosenCourse);
+
+        if (courseObject) {
+            const chosenCourseId = courseObject.id;
+
+            axios
+                .get(`http://localhost:3000/api/${chosenCourseId}/professors`)
+                .then(r => setCourseProfessors(r.data))
+                .catch(err => console.log(err));
+        }
+
+    }, [chosenCourse]);
 
     return (
         <Container>
@@ -28,7 +44,7 @@ export default function NewExamForm() {
                             <select value={chosenCourse} onChange={e => setChosenCourse(e.target.value)}>
                                 {
                                     courses.length > 0
-                                        ? courses.map(c => <option>{c.name}</option>)
+                                        ? courses.map(c => <option key={c.id}>{c.name}</option>)
                                         : <option>...</option>
                                 }
                             </select>
