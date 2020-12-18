@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { media } from '../../assets/mediaQuery';
+
 export const Container = styled.div`
     width: 100%;
     height: calc(100vh - 80px);
@@ -14,13 +16,26 @@ export const Container = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+
+        ${media} {
+            flex-direction: column;
+        }
         
         & > div:first-child {
             width: 65%;
 
+            ${media} {
+                width: 90%;
+            }
+
             & > div {
                 display: flex;
                 justify-content: space-around;
+
+                ${media} {
+                    flex-direction: column;
+                    align-items: center;
+                }
             }
         }
 
@@ -35,6 +50,10 @@ export const SelectContainer = styled.div`
     display: inline-block;
     margin-bottom: 45px;
     font-size: 1.17rem;
+
+    ${media} {
+        margin-bottom: 18px;
+    }
 
     select {
         display: block;
@@ -66,4 +85,9 @@ export const Button = styled.button`
     color: white;
     font-family: 'Patrick Hand', cursive;
     font-size: 1.17rem;
+
+    ${media} {
+        margin-top: 20px;
+        height: 40px;
+    }
 `;
